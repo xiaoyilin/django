@@ -13,7 +13,7 @@ ENV PYTHON_DOWNLOAD_URL https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz
 USER root
 #Update the sources list
 RUN apt-get update
-RUN apt-get dist-upgrade
+RUN apt-get dist-upgrade -y
 WORKDIR /opt
 #官网下载Python
 RUN  wget PYTHON_DOWNLOAD_URL
@@ -41,8 +41,8 @@ WORKDIR /usr/local/virtualenv/bin
 RUN source activate
 RUN pip3 install django && pip3 install uwsgi
 
-#CMD ["/bin/bash"]
-CMD [ "python3", "./manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["/bin/bash"]
+#CMD [ "python3", "./manage.py", "runserver", "0.0.0.0:8000"]
 
 
 #EXPOSE指定于外界交互的端口
