@@ -16,12 +16,11 @@ RUN apt-get update && apt-get install -y wget && apt-get dist-upgrade -y
 WORKDIR /opt
 #下载/解压/删除Python-3.7.1.tgz
 RUN  wget $PYTHON_DOWNLOAD_URL &&  tar -xvf Python-3.7.1.tgz && rm -rf Python-3.7.1.tgz
+WORKDIR /opt/Python-3.7.1
 #编译安装
 RUN ./configure --prefix=/usr/local/python && make && make install
-#删除编译前源目录
-RUN rm -rf /opt/Python-3.7.1
-#创建虚拟环境目录
-RUN mkdir /usr/local/virtualenv
+#删除编译前源目录/创建虚拟环境目录
+RUN rm -rf /opt/Python-3.7.1 && mkdir /usr/local/virtualenv
 #进入创建后虚拟环境目录
 WORKDIR /usr/local/virtualenv
 #创建虚拟环境
