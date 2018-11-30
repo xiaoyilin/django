@@ -12,7 +12,7 @@ ENV PYTHON_DOWNLOAD_URL https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz
 #指定运行容器时的用户名后续的RUN也会使用指定用户
 USER root
 #Update the sources list
-RUN apt-get update && apt-get install -y wget && apt-get dist-upgrade -y && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y wget && apt-get dist-upgrade -y && apt-get install -y build-essential && apt-get install -y zlibc
 WORKDIR /opt
 #下载/解压/删除Python-3.7.1.tgz
 RUN  wget $PYTHON_DOWNLOAD_URL &&  tar -xvf Python-3.7.1.tgz && rm -rf Python-3.7.1.tgz
