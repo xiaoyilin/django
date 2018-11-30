@@ -12,7 +12,7 @@ ENV PYTHON_DOWNLOAD_URL https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz
 #指定运行容器时的用户名后续的RUN也会使用指定用户
 USER root
 #Update the sources list
-RUN apt-get update && apt-get install -y wget && apt-get dist-upgrade -y apt-get install -y build-essential
+RUN apt-get update && apt-get install -y wget && apt-get dist-upgrade -y && apt-get install -y build-essential
 WORKDIR /opt
 #下载/解压/删除Python-3.7.1.tgz
 RUN  wget $PYTHON_DOWNLOAD_URL &&  tar -xvf Python-3.7.1.tgz && rm -rf Python-3.7.1.tgz
@@ -27,7 +27,7 @@ WORKDIR /usr/local/virtualenv
 RUN /usr/local/python3/bin/ -m venv .
 WORKDIR /usr/local/virtualenv/bin
 #激活虚拟环境 
-RUN source activate && ./pip3 install django && ./pip3 install uwsgi &&  ./pip3 install djangorestframework
+RUN source activate && ./pip3 install django && ./pip3 install uwsgi
 
 CMD ["/bin/bash"]
 #CMD [ "python3", "./manage.py", "runserver", "0.0.0.0:8000"]
