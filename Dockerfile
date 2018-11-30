@@ -12,7 +12,7 @@ ENV PYTHON_DOWNLOAD_URL https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz
 #指定运行容器时的用户名后续的RUN也会使用指定用户
 USER root
 #Update the sources list
-RUN apt-get update && apt-get dist-upgrade -y
+RUN apt-get update && apt-get install -y wget && apt-get dist-upgrade -y
 WORKDIR /opt
 #官网下载Python
 RUN  wget $PYTHON_DOWNLOAD_URL
