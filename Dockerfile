@@ -14,31 +14,21 @@ USER root
 #Update the sources list
 RUN apt-get update && apt-get install -y wget && apt-get dist-upgrade -y
 WORKDIR /opt
-#官网下载Python
-RUN  wget $PYTHON_DOWNLOAD_URL
-#创建解压目录解压到当前目录下
-RUN  mkdir python3 && tar -xvf Python-3.7.1.tgz -C  ./python3
-#删除Python-3.7.1.tgz
-RUN  rm -rf Python-3.7.1.tgz
-#创建编译安装的目录
-RUN mkdir /usr/local/python3
-WORKDIR /opt/python3
-RUN ./configure --prefix=/usr/local/python3
-RUN make && make install
-#编译安装完成
-RUN rm -rf /opt/python3
-#安装目录
-WORKDIR /usr/local
+#下载/解压/删除Python-3.7.1.tgz
+RUN  wget $PYTHON_DOWNLOAD_URL &&  tar -xvf Python-3.7.1.tgz && rm -rf Python-3.7.1.tgz
+#编译安装
+RUN ./configure --prefix=/usr/local/python && make && make install
+#删除编译前源目录
+RUN rm -rf /opt/Python-3.7.1
 #创建虚拟环境目录
-RUN mkdir virtualenv
+RUN mkdir /usr/local/virtualenv
 #进入创建后虚拟环境目录
 WORKDIR /usr/local/virtualenv
 #创建虚拟环境
 RUN /usr/local/python3/bin/ -m venv .
 WORKDIR /usr/local/virtualenv/bin
-#激活虚拟环境
-RUN source activate
-RUN pip3 install django && pip3 install uwsgi
+#激活虚拟环境 
+RUN source activate && pip3 install django && pip3 install uwsgi
 
 CMD ["/bin/bash"]
 #CMD [ "python3", "./manage.py", "runserver", "0.0.0.0:8000"]
