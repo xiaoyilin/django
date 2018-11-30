@@ -16,8 +16,8 @@ RUN apt-get update && apt-get install -y wget && apt-get dist-upgrade -y
 WORKDIR /opt
 #官网下载Python
 RUN  wget $PYTHON_DOWNLOAD_URL
-#解压到当前目录下
-RUN  tar -xvf Python-3.7.1.tgz -C  ./python3
+#创建解压目录解压到当前目录下
+RUN  mkdir python3 && tar -xvf Python-3.7.1.tgz -C  ./python3
 #删除Python-3.7.1.tgz
 RUN  rm -rf Python-3.7.1.tgz
 #创建编译安装的目录
@@ -26,7 +26,7 @@ WORKDIR /opt/python3
 RUN ./configure --prefix=/usr/local/python3
 RUN make && make install
 #编译安装完成
-RUN rm -rf python3
+RUN rm -rf /opt/python3
 #安装目录
 WORKDIR /usr/local
 #创建虚拟环境目录
