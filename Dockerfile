@@ -1,5 +1,5 @@
 #基础镜像
-FROM ubuntu:16.04:latest
+FROM ubuntu:16.04
 #维护者信息
 MAINTAINER xiaoyilin <406735078@qq.com>
 
