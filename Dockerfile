@@ -15,7 +15,7 @@ USER root
 RUN apt-get update && apt-get install -y wget && apt-get dist-upgrade -y && apt-get install -y build-essential && apt-get install -y zlib1g-dev
 WORKDIR /opt
 #下载/解压/删除Python-3.7.1.tgz
-RUN  wget $PYTHON_DOWNLOAD_URL &&  tar -xvf Python-3.7.1.tgz && rm -rf Python-3.7.1.tgzapt-get install zlib1g-dev
+RUN  wget $PYTHON_DOWNLOAD_URL &&  tar -xvf Python-3.7.1.tgz && rm -rf Python-3.7.1.tgz
 WORKDIR /opt/Python-3.7.1
 #编译安装
 RUN ./configure --prefix=/usr/local/python && make && make install
