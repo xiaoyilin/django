@@ -25,7 +25,7 @@ RUN rm -rf /opt/Python-3.7.1 && mkdir /usr/local/virtualenv
 #进入创建后虚拟环境目录
 WORKDIR /usr/local/virtualenv
 #创建虚拟环境
-RUN /usr/local/python3/bin/ -m venv .
+RUN /usr/local/python3/bin/python3 -m venv .
 WORKDIR /usr/local/virtualenv/bin
 #激活虚拟环境 
 RUN source activate && ./pip3 install django && ./pip3 install uwsgi
