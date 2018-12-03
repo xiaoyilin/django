@@ -28,7 +28,7 @@ WORKDIR /usr/local/virtualenv
 RUN /usr/local/python/bin/python3 -m venv .
 WORKDIR /usr/local/virtualenv/bin
 #激活虚拟环境 
-RUN . activate && ./pip3 install django && ./pip3 install uwsgi
+RUN . ./activate && ./pip3 install django && ./pip3 install uwsgi
 
 CMD ["/bin/bash"]
 #CMD [ "python3", "./manage.py", "runserver", "0.0.0.0:8000"]
