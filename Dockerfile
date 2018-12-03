@@ -30,7 +30,7 @@ WORKDIR /usr/local/virtualenv/bin
 #改变默认的shell为bash
 RUN dpkg-reconfig bash
 #激活虚拟环境 
-RUN source activate && ./pip3 install django && ./pip3 install uwsgi
+RUN . activate && ./pip3 install django && ./pip3 install uwsgi
 
 CMD ["/bin/bash"]
 #CMD [ "python3", "./manage.py", "runserver", "0.0.0.0:8000"]
