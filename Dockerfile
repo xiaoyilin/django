@@ -27,8 +27,6 @@ WORKDIR /usr/local/virtualenv
 #创建虚拟环境
 RUN /usr/local/python/bin/python3 -m venv .
 WORKDIR /usr/local/virtualenv/bin
-#改变默认的shell为bash
-RUN dpkg-reconfig bash
 #激活虚拟环境 
 RUN . activate && ./pip3 install django && ./pip3 install uwsgi
 
