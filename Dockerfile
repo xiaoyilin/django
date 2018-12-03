@@ -32,9 +32,12 @@ RUN . ./activate && ./pip3 install django && ./pip3 install uwsgi
 
 CMD ["/bin/bash"]
 #CMD [ "python3", "./manage.py", "runserver", "0.0.0.0:8000"]
+#指定于外界交互的端口
+EXPOSE 8000
 
 
-#EXPOSE指定于外界交互的端口
+
+
 #ENV设置环境变量
 #RUN用于指定镜像构建时所要执行的命令
 #CMD用于指定在容器启动时所要执行的命令
