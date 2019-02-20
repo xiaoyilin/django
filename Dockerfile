@@ -6,9 +6,9 @@ LABEL version="1.0"
 LABEL description="Django"
 ENV HOSTNAME xiaoyilin
 #Python版本
-ENV PYTHON_VERSION 3.7.1
+ENV PYTHON_VERSION 3.7.2
 #PYTHON下载地址zlib1g-dev
-ENV PYTHON_DOWNLOAD_URL https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz
+ENV PYTHON_DOWNLOAD_URL https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
 #指定运行容器时的用户名后续的RUN也会使用指定用户
 USER root
 RUN apt-get update &&  \
@@ -21,12 +21,12 @@ RUN apt-get update &&  \
 	apt-get autoremove
 WORKDIR /opt
 #下载/解压/删除Python-3.7.1.tgz
-RUN  wget $PYTHON_DOWNLOAD_URL &&  tar -xvf Python-3.7.1.tgz && rm -rf Python-3.7.1.tgz
-WORKDIR /opt/Python-3.7.1
+RUN  wget $PYTHON_DOWNLOAD_URL &&  tar -xvf Python-3.7.2.tgz && rm -rf Python-3.7.2.tgz
+WORKDIR /opt/Python-3.7.2
 #编译安装
 RUN ./configure --prefix=/usr/local/python && make && make install
 #删除编译前源目录/创建虚拟环境目录
-RUN rm -rf /opt/Python-3.7.1 && mkdir /usr/local/virtualenv
+RUN rm -rf /opt/Python-3.7.2 && mkdir /usr/local/virtualenv
 #进入创建后虚拟环境目录
 WORKDIR /usr/local/virtualenv
 #创建虚拟环境
